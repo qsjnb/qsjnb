@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}背景}{1}
+\contentsline {subsection}{\numberline {1.1}数据介绍}{1}
+\contentsline {section}{\numberline {2}数据处理}{1}
+\contentsline {subsection}{\numberline {2.1}数据清洗}{1}
+\contentsline {section}{\numberline {3}数据可视化}{2}
+\contentsline {subsection}{\numberline {3.1}条形图}{2}
+\contentsline {subsection}{\numberline {3.2}相关系数热力图}{3}
+\contentsline {subsection}{\numberline {3.3}看病平均花费top10}{4}
+\contentsline {subsection}{\numberline {3.4}双柱状图}{5}
+\contentsline {subsection}{\numberline {3.5}饼图}{5}
+\contentsline {subsection}{\numberline {3.6}玫瑰图}{6}
+\contentsline {subsection}{\numberline {3.7}圆环图}{7}
+\contentsline {subsection}{\numberline {3.8}象型柱图}{7}
+\contentsline {subsection}{\numberline {3.9}环形饼图}{8}
+\contentsline {subsection}{\numberline {3.10}以特征画图}{8}
+\contentsline {section}{\numberline {4}数据可视化大屏}{9}
+\contentsline {section}{\numberline {5}总结与评价}{10}
+\contentsline {subsection}{\numberline {5.1}总结}{10}
+\contentsline {subsection}{\numberline {5.2}评价}{10}
+\contentsline {section}{参考文献}{11}
+\contentsline {section}{附录}{12}
+\contentsfinish 

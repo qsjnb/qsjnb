@@ -1,0 +1,369 @@
+%# -*- coding: utf-8 -*-
+%!TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%论文模板                                                                        %
+%此为中文XeLatex-article                                                         %
+%                             ！编译方式是：XeLaTeX  ！                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt]{article}
+\usepackage[slantfont,boldfont]{xeCJK}% 允许斜体和粗体
+\setCJKmainfont{FangSong}             % 设置缺省中文字体
+\setmainfont{Times New Roman}         % 设置Times New Roman为默认的英文字体
+\setlength{\parindent}{2.5em}         % 中文缩进两个汉字位
+
+\usepackage{CJK}
+\usepackage{cmap}  %解决复制乱码问题
+\usepackage{titlesec}%章节标题格式设置
+\usepackage{titletoc}%目录格式设置
+\usepackage{amsmath}%公式环境数学命令
+\usepackage{array}%数组和表格制作
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=2cm]{geometry}% 版面尺寸设置
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{verbatim,listings}
+\usepackage{color,xcolor}
+%\usepackage{graphicx}
+\usepackage{slashbox}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage{float}    % for fig.pos='H'
+\usepackage{rotfloat} % for sidewaysfigure
+\usepackage{subfig}   % for subfigure
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%自定义命令：
+\makeatletter
+%字号设置
+\newcommand{\chuhao}{\fontsize{42pt}{\baselineskip}\selectfont}% 初号
+\newcommand{\xiaochuhao}{\fontsize{36pt}{\baselineskip}\selectfont}% 小初号
+\newcommand{\yihao}{\fontsize{28pt}{\baselineskip}\selectfont}% 一号
+\newcommand{\erhao}{\fontsize{21pt}{\baselineskip}\selectfont}% 二号
+\newcommand{\xiaoerhao}{\fontsize{18pt}{\baselineskip}\selectfont}% 小二号
+\newcommand{\sanhao}{\fontsize{15.75pt}{\baselineskip}\selectfont}% 三号
+\newcommand{\xiaosanhao}{\fontsize{15pt}{\baselineskip}\selectfont}% 小三号
+\newcommand{\sihao}{\fontsize{14pt}{\baselineskip}\selectfont}% 四号
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}% 小四号
+\newcommand{\wuhao}{\fontsize{10.5pt}{\baselineskip}\selectfont}% 五号
+\newcommand{\xiaowuhao}{\fontsize{9pt}{\baselineskip}\selectfont}% 小五号
+\newcommand{\liuhao}{\fontsize{7.875pt}{\baselineskip}\selectfont}% 六号
+\newcommand{\qihao}{\fontsize{5.25pt}{\baselineskip}\selectfont}% 七号
+
+%行间距设置
+\renewcommand\baselinestretch{1.25}%1.25倍行距
+
+%页眉页脚设置1
+\fancypagestyle{plain}
+{
+\fancyhead{}
+\fancyhead[C]{\wuhao{数理与土木工程学院大数据系课程论文}}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+}
+%页眉页脚设置2
+\pagestyle{fancy}
+{
+ \fancyhead{}
+ \fancyhead[C]{\wuhao{数理与土木工程学院大数据系课程论文}}
+ \fancyfoot{}
+}
+
+%重新定义
+\renewcommand\refname{参考文献}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+
+
+%表格设置
+\newsavebox{\tablebox}
+
+
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\lstset{numbers=left,
+numberstyle= \tiny,
+keywordstyle= \color{ blue!70},commentstyle=\color{red!50!green!50!blue!50},
+frame=shadowbox,
+rulesepcolor= \color{ red!20!green!20!blue!20}
+}
+\lstset{
+  breaklines,%自动换行
+  columns=flexible,%不随便添加空格,只在已经有空格的地方添加空格,
+%如果想要添加空格使用fixed作为参数(这是默认的),如果坚决不添加空格使用fullflexible作为参数.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%封面%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+
+\begin{center}
+\includegraphics[height=0.15\textwidth]{figures/logo.jpg}
+
+\vspace{4cm}
+
+{\yihao\bf{关于医疗费用的数据可视化}}
+\end{center}
+
+\vspace{4cm}
+
+{\xiaosanhao\bf
+\begin{center}
+\makebox[3cm][l]{学~~~~~~~~~院：}\underbar{\makebox[11cm][c]{数理与土木工程学院}}
+\end{center}
+\begin{center}
+\makebox[3cm][l]{课~~~~~~~~~程：}\underbar{\makebox[11cm][c]{数据可视化}}
+\end{center}
+\begin{center}
+\makebox[3cm][l]{班~~~~~~~~~级：}\underbar{\makebox[11cm][c]{数据科学与大数据技术1班}}
+\end{center}
+\begin{center}
+\makebox[3cm][l]{姓~~~~~~~~~名：}\underbar{\makebox[4cm][c]{覃诗杰}}\makebox[3cm][l]{学~~~~~~~~~号：}\underbar{\makebox[4cm][c]{201205102261}}
+\end{center}
+}
+
+
+\vspace{4cm}
+
+
+\begin{center}\wuhao\bf
+{
+\makebox[5cm][c]{中国~$\cdot$~珠海}
+
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\today\\
+%\makebox[5cm][c]{二〇二〇年六月}
+}
+
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%以下命令生成中文摘要%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\thispagestyle{fancy}
+
+\begin{center}
+{\sanhao\textbf{数据可视化}}
+\end{center}
+
+\renewcommand\abstractname{\xiaosanhao\textbf{摘~~~要}}
+
+\begin{abstract}
+%\noindent\qquad 表示中文摘要每段断首缩进两个汉字位
+\noindent\qquad 此次数据集是某地区的医疗数据，目的是为了分析医疗费用的花费情况，在不同的医院花费的金额。分析当代人民生病的主要病理，为此地的医疗建设和群众的就医情况做一个数据分析。为此做关于医疗费用的数据可视化，增加可读性。
+
+%\noindent\qquad 表示中文摘要每段断首缩进两个汉字位
+\noindent\qquad 此次主要使用的是python软件，版本为python3.9.11和jupyter，还有数据可视化工具Tableau Public 2022.2。来进行数据分析。
+
+%\noindent\qquad 表示中文摘要每段断首缩进两个汉字位
+\noindent\qquad 数据可视化的意义是帮助人更好的分析数据，信息的质量很大程度上依赖于其表达方式。总结如下，在花费的费用方面，无论是一级医院还是社区医院，所花费的金额都是一样的。主动脉弓狭窄是最严重的问题，也是花费金额最多的疾病。社区医院就医占多数，其他的也都差不多。主要的医护人员处于中年。发病率最高的是糖尿病。
+
+%此处的关键词之间用空格“\quad”隔开
+%一般设置3—8个关键词
+\noindent\textbf{关键词：}多元线性回归\quad 决定系数\quad 精确线搜索\quad 非精确线搜索
+\end{abstract}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%目录%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\thispagestyle{fancy}
+
+\vspace*{1mm}%垂直距离
+
+
+\renewcommand\contentsname{\xiaosanhao\textbf{目~~~录}}
+
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%正文：第1部分%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage%新的一页
+
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+
+\section{背景}
+\noindent\qquad 对于某个具体的个体来说，医疗是指个体为了挽救生命、延长寿命、提高生存质量从而使个人效用最大化所最需要利用的、最优先利用的医疗服务或医疗措施；对于某个社会、某个群体（比如某个国家的公民）来说，医疗是指对改善全体社会公民健康、提高国民素质、推动社会发展贡献最大，最应该为全体公民所享受的医疗服务或医疗措施。所有我们对医疗进行探究
+
+
+\section{数据处理}
+
+\subsection{数据清洗}
+
+数据结构：
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+    \hline
+        ID & NL & XB & RYLB & YLLB & RYQH & JZQH  \\ \hline
+        序号 & 年龄 & 性别 & 人员 & 医疗类型 & 人员区 & 就诊区\\ \hline
+        JGDJ & RYRQ & CYRQ & ZDMC & ZFY & TCFY & JSRQ\\ \hline
+        医疗机构等级 & 入院日期 & 出院日期 & 诊断名称 & 支付费用 & 统筹费用 & 结算日期\\ \hline
+    \end{tabular}
+\end{table}
+
+先查询我们需要的数据的缺失值，异常值，做出缺失值可视化图：
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{figures/2.png}
+\caption{数据可视化}\label{fig:label2}
+\end{figure}
+
+用热力图展现一下相关数据结构：
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{figures/1.png}
+\caption{数据可视化}\label{fig:label2}
+\end{figure}
+
+也可以从数据热力图看出缺失了数据
+
+然后做数据处理，因为有年龄的缺失，所有用中位数填充，然后还一缺失的是性别，这就用众数填补：
+\begin{lstlisting}
+data = data.dropna(axis=0)
+data.isna().sum()    # 统计缺失值
+data.RYQH[data.RYQH.isnull()] = data.JZQH[data.RYQH.isnull()]
+\end{lstlisting}
+
+\section{数据可视化}
+
+\subsection{条形图}
+利用精确线搜索求得合适的步长$\alpha_k$，在迭代点$x_k$，当迭代方向$d_k$已知时，使得$f(x)$ 沿$d_k$关于步长$\alpha$取极小值，即：
+$${min} f(x_k+\alpha d_k)$$
+
+假设它的解为$\alpha_k$，则$x_{k+1}=x_k+\alpha_kd_k$。由精确线搜索得到：
+$$g_{k+1}^{T}d_k=0$$
+
+\begin{equation}
+  Y=\beta_0+\beta_1x_1+\beta_2x_2+\beta_3x_3
+\end{equation}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{figures/p1.png}
+\caption{按城市划分的收入分配图}\label{fig:label2}
+\end{figure}
+
+\begin{table}[!ht]
+\centering
+\caption{购买养老金客户数据信息}\label{tab6}
+\begin{tabular}{ccccccc}
+\toprule
+客户性别 &年龄 &客户群体 &家庭总收入 &已故指数	&养老金2 &养老金1	\\
+\midrule
+H        &53   &2        &200697.93  &	 N	    & 0	     &	1		\\
+H        &21   &3	       &84904.41	 &	 N	    & 1	     &	1		\\
+V        &46   &1	       &515083.09	 &	 N	    & 1	     &	0		\\
+…	       &	…  &	…	     &	…	       &	…	      &	…	     &	…	\\
+V        &46   &1	       &515085.09	 &	 N	    & 1	     &	0		\\
+H        &42   &1	       &616085.09	 &	 N	    & 1	     &	0		\\
+V        &46   &1	       &512085.09	 &	 N	    & 0	     &	0		\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+已知$\beta_k$，下降方向$d_k=-g_k$，求解$\alpha_k$，其中可利用下降方向得到$\beta_{k+1}=\beta_k+\alpha_kd_k$，进而得到：
+
+\[
+\begin{aligned}
+min J(\beta_{k+1})&=min J(\beta_k-\alpha_kg_k)\\
+&=\frac{1}{2m}\sum_{i=1}^{m}(X^{(i)}(\beta_k-\alpha_kg_k)-Y^{(i)})^2
+\end{aligned}
+\]
+
+
+令上式对$\alpha_k$求导等于0得到：
+$$-\frac{1}{2m}\sum_{i=1}^{m}2(X^{(i)}\beta_k-X^{(i)}\beta_kg_k-Y^{(i)})X^{(i)}g_k=0$$
+
+由于$m$（样本容量）不等于0，可将上式进一步化解为：
+$$\sum_{i=1}^{m}(X^{(i)}\beta_k-X^{(i)}\beta_kg_k-Y^{(i)}X^{(i)}g_k=0$$
+
+将上式经过移项等处理后得到：
+$$\alpha_k=
+\frac{\sum_{i=1}^{m} (X^{(i)}\beta_kX^{(i)}g_k-Y^{(i)}X^{(i)}g_k)}
+{\sum_{i=1}^{m}(X^{(i)}g_k)^2}$$
+
+之后按照如下步骤进行求解
+
+步骤1：给出$k=0,\epsilon>0,x_0\in R^n$
+
+步骤2：若终止条件满足，则停止迭代
+
+步骤3：计算$d_k=-g_k$
+
+步骤4：一维精确线搜索求$\alpha_k$
+
+步骤5：$x_{k+1}=x_k+\alpha_kd_k$，转步骤2
+
+利用精确线搜索预测相对误差为0.0058，影响能源加工转换效率的模型为$Y=0.1533+0.6651x_1+0.1216x_2+0.1790x_3$。
+
+之后由误差平方和$SSE=\sum(Y\_ actual-Y\_ predict)^2$可进一步得到决定系数$$R^2=1-\frac{\sum(Y\_actual-Y\_predict)^2}{\sum(Y\_actual-Y\_mean)^2}$$
+
+之后可得到校正决定系数
+$$R^2\_adjusted=1-\frac{(1-R^2)(n-1)}{n-p-1}$$
+
+n为样本数量，p为特征数量。校正决定系数为0.9157，接近与1，表示这个模型对数据的拟合较好。
+\begin{lstlisting}[language={[ANSI]C}]
+int main(int argc, char ** argv)
+{
+printf("Hello!\n");
+return 0;
+}
+\end{lstlisting}
+
+\subsection{模型优化}
+利用精确线搜索求步长一共迭代了70次，为了尝试使模型的拟合程度更好，转用非精确线搜索，利用Armjio准则求步长，以下为展示的主要程序：
+
+\lstinputlisting[language=python]{mypython.py}
+
+其中迭代次数虽有增加，但是模型的拟合程度更优了，优化后的模型相对误差为0.0057，绝对误差为0.0174，两者都减小了。校正决定系数是0.9167，比0.9157更接近于1，拟合程度更优了。因此，改进后的模型为$Y=0.1498+0.6715x_1+0.1301x_2+0.1715x_3$。
+
+
+
+\section{总结与评价}
+\subsection{总结}
+本文通过对能源加工转换总效率与发电及电站供热总效率、炼焦总效率和炼油总效率的影响程度分析，首先利用精确线搜索对多元线性回归进行了求解。之后为了提高模型的优化程度，利用非精确线搜索对模型又一次进行了分析和求解，使得模型的误差减小了，拟合度增加了。
+
+\subsection{评价}
+优点：利用对多个因变量进行了回归分析，经过进一步优化使得模型的拟合度更好了，也减小了相对误差和绝对误差。适用范围广，能用于多个领域进行相关因素的分析。
+
+缺点：在考虑拟合程度和误差大小的情况下，不可避免地增加了代码的运算时间，在运算效率上还有欠缺。
+
+
+
+%%%%%%%%%%%%%%%%%%%%参考文献%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\begin{thebibliography}{99}\addcontentsline{toc}{section}{参考文献}
+\wuhao{
+\bibitem{huang}黄永昌.《scikit-learn机器学习：常用算法原理及编程实战》.
+
+\bibitem{jiang}姜启源.《数学模型》（第三版）. 高等教育出版社.
+
+\bibitem{gao}高等教育出版社. https://blog.csdn.net/weixin\_38100489/article/details/78175928
+
+}
+\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%附录%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+
+{\xiaosanhao\textbf{附\quad 录}}\addcontentsline{toc}{section}{附录}
+
+%%%将R语言程序直接插入附录中，需要把R代码放入R文件中
+%注意该R文件必须保存为UTF-8的格式
+\textbf{附录1：梯度下降法的程序}
+\lstinputlisting[language=python]{mypython.py}
+
+
+
+
+\end{document}
