@@ -1,0 +1,31 @@
+新下的mysql按道理来说密码什么的都没有，查了一下资料据说是因为centos里面还有一个内置的MariaDB，这个也是mysql作者的一个女儿的名字做的数据库的名字
+sudo systemctl restart mysqld.service
+
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+在Ubuntun中关闭时要用权限sudo
+
+可能密码会忘记，所以索性的去直接去设置跳过密码
+编辑:sudo vim /etc/mysql/my.cnf
+加入这两行代码就可以直接跳过验证登录
+[mysqld]
+
+skip-grant-tables
+
+查询进程： ps  ajx|grep xxx比如mysql，redis
+
+
+设备上没有空间的问题解决
+在linux中设备空间有两个条件决定的：硬盘容量和inode
+df -hl去查看
+/下的部分文件给删除(如日志)以及一些如JDK、Redis、代码文件、文件服务存储迁移到/dev下，这样一来，将/dev充分利用起来
+
+
+VBoxManage modifyhd E:\bigdata tool\yjw\ubunt_wei\ubunt_wei-disk002.vdi --resize 25000
+
+博客
+https://blog.csdn.net/Crazy_SunShine/article/details/103507800
+
+sqoop的官方地址
+https://attic.apache.org/projects/sqoop.html
+
+flush privileges
